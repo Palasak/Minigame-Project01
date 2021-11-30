@@ -6,6 +6,7 @@ from sprites import *
 class Game:
     def __init__(self):
         # initialize game window, etc
+        pg.init()
         pg.mixer.init()
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         pg.display.set_caption(TITLE)
@@ -14,9 +15,9 @@ class Game:
 
     def new(self):
         # start a new game 
-        # self.all_sprites = pg.sprite.Group()
-        # self.player = Player()
-        # self.all_Sprites.add(self.player)
+        self.all_sprites = pg.sprite.Group()
+        self.player = Player()
+        self.all_sprites.add(self.player)
         self.run()
 
     def run(self):
@@ -30,8 +31,7 @@ class Game:
 
     def update(self):
         # game loop - updates
-        # self.all_sprites.update()
-        pass
+        self.all_sprites.update()
 
     def events(self):
         # game loop - events
@@ -45,7 +45,7 @@ class Game:
     def draw(self):
         # game loop - draw
         self.screen.fill(BLACK)
-        # self.all_sprites.draw(self.screen)
+        self.all_sprites.draw(self.screen)
         # *after* drawing everything, flip the display
         pg.display.flip()
 
@@ -62,4 +62,5 @@ g.show_start_screen()
 while g.running:
     g.new()
     g.show_go_screen()
+    
 pg.quit()
