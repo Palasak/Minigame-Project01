@@ -13,10 +13,10 @@ class Player(pg.sprite.Sprite):
 
     def update(self):
         self.speedx = 0
-        self.keystate = pg.key.get_pressed()
-        if self.keystate[pg.K_LEFT]:
+        keystate = pg.key.get_pressed()
+        if keystate[pg.K_LEFT]:
             self.speedx = -8
-        if self.keystate[pg.K_RIGHT]:
+        if keystate[pg.K_RIGHT]:
             self.speedx = 8
         self.rect.x += self.speedx
         if self.rect.right > WIDTH:
